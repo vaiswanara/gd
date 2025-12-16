@@ -275,3 +275,16 @@ header h2 {
         font-size: 0.85rem;
     }
 }
+
+/* Archive Status Styles */
+.status-full {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.status-partial {
+    color: #f57c00;
+    font-weight: bold;
+    font-size: 0.9em;
+}

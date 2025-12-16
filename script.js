@@ -109,13 +109,14 @@ function updateArchive(archiveData) {
     archiveData.forEach(row => {
         const tr = document.createElement('tr');
         const isFull = row.received >= row.required;
-        const statusIcon = isFull ? "✅" : "⏳";
+        const statusText = isFull ? "Fulfilled" : "Partially Fulfilled";
+        const statusClass = isFull ? "status-full" : "status-partial";
         
         tr.innerHTML = `
             <td>${monthNames[row.month - 1]} ${row.year}</td>
             <td>₹${row.required.toLocaleString()}</td>
             <td>₹${row.received.toLocaleString()}</td>
-            <td>${statusIcon}</td>
+            <td><span class="${statusClass}">${statusText}</span></td>
         `;
         tbody.appendChild(tr);
     });
