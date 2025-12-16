@@ -1,0 +1,4 @@
+year, month, requiredAmount, ReceivedAmount
+2025, 11, 17432, 16000
+2025, 12, 15000, 100
+2026, 1, 15000, 0

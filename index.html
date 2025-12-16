@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guru Dakshina - Donation Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <img src="logo.gif" alt="Logo" class="logo">
+            <h2>Guru Dakshina - Transparency Page</h2>
+            <p id="month-display">Loading...</p>
+            <!-- Donate Button -->
+            <button id="donate-btn" class="donate-btn" onclick="window.location.href='https://vaiswanara.com/donate/'">Voluntary Support</button>
+            <p class="header-subtitle">This is not a request — only transparent information.</p>
+        </header>
+
+        <!-- Progress Section (Circular Chart) -->
+        <div class="card summary-card">
+            <div class="progress-container">
+                <div class="circular-progress" id="progress-circle">
+                    <div class="value-container" id="percentage-text">0%</div>
+                </div>
+            </div>
+            <p class="chart-caption">The indicator automatically closes once the monthly need is fulfilled.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">Monthly Living Requirement:</span>
+                    <span class="value" id="target-amount">₹0</span>
+                </div>
+                <div class="stat-item highlight">
+                    <span class="label">Support Offered by Students:</span>
+                    <span class="value" id="raised-amount">₹0</span>
+                </div>
+                <div class="stat-item" style="display: none;">
+                    <span class="label">Remaining Needed:</span>
+                    <span class="value" id="remaining-amount">₹0</span>
+                </div>
+            </div>
+
+            <div id="status-message" class="status-msg" style="display: none;"></div>
+        </div>
+
+        <!-- Monthly Archive Section -->
+        <div class="card">
+            <h3>📅 Past Months Archive</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Goal</th>
+                        <th>Support</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="archive-body">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tradition-note">
+            <strong>Note:</strong><br>
+            Guru Dakshina is a tradition, not an obligation.<br>
+            Supporting when there is a need is meritorious.<br>
+            Not supporting when the need is fulfilled is equally dharmic.
+        </div>
+    </div>
+
+    <div class="page-footer">
+        Gratitude for your learning spirit and goodwill.
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

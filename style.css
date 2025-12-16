@@ -1,0 +1,277 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 10px auto;
+    max-width: 80px; /* చిన్నగా కనిపించడానికి సైజు */
+}
+
+header h2 {
+    margin: 0;
+    color: #902e48; /* Maroon color from image */
+}
+
+.card {
+    background: #fff5f5; /* Light pinkish bg */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+/* Circular Progress Bar */
+.progress-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.circular-progress {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background: conic-gradient(#902e48 0deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s ease;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #fff5f5;
+}
+
+.value-container {
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+    color: #902e48;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.stat-item.highlight .value {
+    color: #902e48;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.status-msg {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #2e7d32; /* Green for success */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Donors List */
+.donors-section h3 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    color: #555;
+}
+
+.donor-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.donor-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    color: #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.donor-info {
+    flex-grow: 1;
+}
+
+.donor-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.donor-amount {
+    font-weight: bold;
+    color: #555;
+}
+
+.donor-msg {
+    font-size: 13px;
+    color: #777;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.donor-date {
+    font-size: 12px;
+    color: #999;
+    float: right;
+}
+
+/* New Styles for Details Button & Table */
+.action-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.details-btn {
+    background-color: #902e48;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.details-btn:hover {
+    background-color: #7a253c;
+}
+
+.hidden-details {
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 2px solid #eee;
+    color: #902e48;
+}
+
+.data-table td {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+}
+
+.download-btn { background-color: #0277bd; margin-top: 10px; width: 100%; }
+.delete-btn { background-color: #c62828; padding: 5px 10px; font-size: 12px; margin-left: 5px;}
+
+/* Donate Button Styles */
+.donate-btn {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.donate-btn:hover {
+    transform: scale(1.05);
+    background-color: #1b5e20;
+}
+
+/* Refactored Text Styles */
+.header-subtitle {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.chart-caption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.tradition-note {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+.page-footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    header h2 {
+        font-size: 1.3rem;
+    }
+    /* Compact table for mobile */
+    .data-table th, .data-table td {
+        padding: 6px 4px;
+        font-size: 0.85rem;
+    }
+}
