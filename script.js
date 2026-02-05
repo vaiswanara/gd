@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
+    fetchDonors();
 
     document.getElementById('donate-btn').addEventListener('click', () => {
         document.getElementById('bank-details').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -8,9 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchData() {
     try {
-        // Fetch the text file
-        const response = await fetch('data.txt');
-        if (!response.ok) throw new Error("Failed to load data.txt");
+        // Fetch data from Google Sheets CSV
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR09cKIiWwSOLFsJY-xHYCUnplX55f5bt5IiLXL2jN64pWktz1wf2UgAeQBxQsaB2ceMyyMMDbDr5Cu/pub?gid=0&single=true&output=csv';
+        const response = await fetch(sheetUrl);
+        if (!response.ok) throw new Error("Failed to load data from Google Sheets");
         const text = await response.text();
         processData(text);
     } catch (error) {
@@ -119,5 +121,55 @@ function updateArchive(archiveData) {
             <td><span class="${statusClass}">${statusText}</span></td>
         `;
         tbody.appendChild(tr);
+    });
+}
+
+async function fetchDonors() {
+    try {
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR09cKIiWwSOLFsJY-xHYCUnplX55f5bt5IiLXL2jN64pWktz1wf2UgAeQBxQsaB2ceMyyMMDbDr5Cu/pub?gid=921186512&single=true&output=csv';
+        const response = await fetch(sheetUrl);
+        if (!response.ok) throw new Error("Failed to load donors");
+        const text = await response.text();
+        processDonors(text);
+    } catch (error) {
+        console.error('Error loading donors:', error);
+        document.getElementById('donors-list').innerHTML = '<p style="text-align:center; color:#777;">Unable to load donor list.</p>';
+    }
+}
+
+function processDonors(csvText) {
+    const lines = csvText.trim().split('\n');
+    const donors = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(',');
+        if (parts.length >= 2) {
+            const dateStr = parts[0].trim();
+            const name = parts[1].trim();
+            const amount = parts.length > 2 ? parts[2].trim() : '0';
+            
+            const [day, month, year] = dateStr.split('-').map(Number);
+            const dateObj = new Date(year, month - 1, day);
+            
+            donors.push({ dateStr, name, amount, dateObj });
+        }
+    }
+
+    donors.sort((a, b) => b.dateObj - a.dateObj);
+
+    const container = document.getElementById('donors-list');
+    container.innerHTML = '';
+
+    donors.forEach(d => {
+        const div = document.createElement('div');
+        div.className = 'donor-card';
+        div.innerHTML = `
+            <div class="donor-avatar">${d.name.charAt(0).toUpperCase()}</div>
+            <div class="donor-info">
+                <div class="donor-name">${d.name}</div>
+                <div class="donor-date">${d.dateStr}</div>
+            </div>
+        `;
+        container.appendChild(div);
     });
 }

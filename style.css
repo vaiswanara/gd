@@ -108,6 +108,11 @@ header h2 {
     color: #555;
 }
 
+#donors-list {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
 .donor-card {
     display: flex;
     align-items: flex-start;
@@ -152,9 +157,8 @@ header h2 {
 }
 
 .donor-date {
-    font-size: 12px;
+    font-size: 14px;
     color: #999;
-    float: right;
 }
 
 /* New Styles for Details Button & Table */
@@ -240,7 +244,7 @@ header h2 {
 
 .chart-caption {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     color: #777;
     margin-top: 10px;
     margin-bottom: 15px;
